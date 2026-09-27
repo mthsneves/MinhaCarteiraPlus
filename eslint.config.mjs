@@ -1,0 +1,4 @@
+import expo from 'eslint-config-expo/flat.js';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+
+export default [...expo, eslintPluginPrettierRecommended];

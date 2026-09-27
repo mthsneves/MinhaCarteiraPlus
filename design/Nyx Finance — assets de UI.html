@@ -1,0 +1,246 @@
+<!-- Nyx Finance — design assets -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: dark;
+    --ink:#05080B; --carbon:#0E1418; --steel:#171F25; --line:rgba(255,255,255,.09);
+    --cyan:#22D8F0; --cyan-dim:#0C7E93; --cyan-ink:#04232A;
+    --text-1:#F2F6F7; --text-2:#8FA3AB; --text-3:#5A6970;
+    --mint:#3EDC9A; --coral:#FF7A6E;
+    --r:14px; --rs:10px;
+    font-family:'Inter',sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--ink);color:var(--text-1);}
+  body{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);}
+  .wrap{max-width:1180px;margin:0 auto;padding:64px 28px 96px;}
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:600;margin:0;color:var(--text-1);}
+  .eyebrow{color:var(--cyan);font-size:13px;font-weight:500;margin:0 0 10px;}
+  .lead{color:var(--text-2);font-size:15.5px;line-height:1.65;max-width:560px;margin:14px 0 0;}
+  .divider{height:1px;background:var(--line);margin:56px 0;border:none;}
+  section h2{font-size:22px;margin-bottom:22px;}
+  code{font-family:ui-monospace,monospace;font-size:12px;color:var(--text-2);}
+
+  /* palette */
+  .palette{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;}
+  .swatch{border-radius:var(--r);border:1px solid var(--line);overflow:hidden;background:var(--carbon);}
+  .swatch .fill{height:74px;}
+  .swatch .info{padding:11px 13px;}
+  .swatch .name{font-size:13px;font-weight:500;}
+  .swatch .hex{display:block;margin-top:2px;}
+
+  /* type scale */
+  .type-row{display:flex;align-items:baseline;gap:22px;padding:18px 0;border-top:1px solid var(--line);}
+  .type-row:last-child{border-bottom:1px solid var(--line);}
+  .type-row .tag{width:96px;flex:none;color:var(--text-3);font-size:12px;}
+  .display{font-size:46px;font-weight:600;letter-spacing:-.01em;}
+  .h1s{font-size:27px;font-weight:600;}
+  .h2s{font-size:19px;font-weight:600;}
+  .body-s{font-size:15px;color:var(--text-2);font-weight:400;}
+  .cap-s{font-size:12.5px;color:var(--text-3);font-weight:500;}
+
+  /* components row */
+  .comp-grid{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  .btn{font-family:'Inter';font-size:14px;font-weight:500;padding:12px 20px;border-radius:var(--rs);border:1px solid transparent;cursor:default;}
+  .btn-primary{background:var(--cyan);color:var(--cyan-ink);}
+  .btn-secondary{background:transparent;border-color:var(--cyan-dim);color:var(--cyan);}
+  .btn-ghost{background:transparent;color:var(--text-2);}
+  .field{background:var(--carbon);border:1px solid var(--line);border-radius:var(--rs);padding:12px 14px;font-size:14px;color:var(--text-2);width:220px;}
+  .chip{display:inline-flex;align-items:center;gap:7px;background:var(--steel);border-radius:20px;padding:7px 14px;font-size:13px;color:var(--text-2);}
+  .chip.on{background:rgba(34,216,240,.12);color:var(--cyan);}
+  .dot{width:7px;height:7px;border-radius:50%;background:currentColor;}
+
+  /* phones */
+  .phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:26px;}
+  .phone{background:var(--carbon);border:1px solid var(--line);border-radius:32px;padding:14px;}
+  .screen{background:var(--ink);border-radius:22px;padding:20px 18px 24px;min-height:560px;position:relative;}
+  .screen-label{position:absolute;top:-30px;left:2px;font-size:12.5px;color:var(--text-3);}
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;}
+  .hi{font-size:13px;color:var(--text-3);}
+  .name{font-size:16px;font-weight:600;font-family:'Space Grotesk';}
+  .icon{width:34px;height:34px;border-radius:50%;background:var(--steel);display:flex;align-items:center;justify-content:center;}
+  svg{display:block;}
+
+  .balance-card{background:linear-gradient(180deg,#101A20,#0C1519);border:1px solid var(--line);border-radius:20px;padding:22px;margin-bottom:20px;}
+  .balance-label{font-size:12.5px;color:var(--text-3);display:flex;align-items:center;gap:8px;}
+  .balance-num{font-family:'Space Grotesk';font-size:29px;font-weight:600;margin:8px 0 16px;}
+  .balance-sub{display:flex;gap:18px;font-size:12.5px;color:var(--text-2);}
+  .balance-sub b{color:var(--mint);font-weight:500;}
+
+  .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:22px;}
+  .quick .q{background:var(--carbon);border:1px solid var(--line);border-radius:14px;padding:12px 4px;text-align:center;}
+  .quick .q .icon{margin:0 auto 8px;width:30px;height:30px;}
+  .quick .q span{font-size:10.5px;color:var(--text-2);}
+
+  .sec-title{font-size:13px;color:var(--text-2);margin:0 0 12px;display:flex;justify-content:space-between;}
+  .sec-title a{color:var(--cyan);font-size:12.5px;}
+  .tx{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);}
+  .tx:last-child{border:none;}
+  .tx .icon{background:var(--steel);flex:none;}
+  .tx .who{font-size:13.5px;font-weight:500;}
+  .tx .cat{font-size:11.5px;color:var(--text-3);}
+  .tx .amt{margin-left:auto;font-size:13.5px;font-weight:500;font-family:'Space Grotesk';}
+  .amt.in{color:var(--mint);}
+  .amt.out{color:var(--text-1);}
+
+  .card-visual{background:var(--steel);border-radius:18px;padding:20px;margin-bottom:18px;border:1px solid var(--line);position:relative;overflow:hidden;}
+  .card-visual::after{content:'';position:absolute;right:-30px;top:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(34,216,240,.14),transparent 70%);}
+  .card-num{font-family:'Space Grotesk';font-size:15px;letter-spacing:.12em;margin:26px 0 16px;}
+  .card-foot{display:flex;justify-content:space-between;font-size:11px;color:var(--text-2);}
+  .card-foot b{display:block;color:var(--text-1);font-size:13px;font-weight:500;margin-top:2px;}
+
+  .bars{display:flex;align-items:flex-end;gap:10px;height:90px;margin-bottom:8px;}
+  .bars .b{flex:1;background:var(--steel);border-radius:6px 6px 0 0;position:relative;}
+  .bars .b.hi{background:var(--cyan);}
+  .bar-labels{display:flex;gap:10px;}
+  .bar-labels span{flex:1;text-align:center;font-size:10px;color:var(--text-3);}
+
+  .filters{display:flex;gap:8px;margin-bottom:18px;}
+  .day-label{font-size:11.5px;color:var(--text-3);margin:16px 0 4px;}
+
+  .row-link{display:flex;align-items:center;gap:13px;padding:13px 0;border-bottom:1px solid var(--line);font-size:14px;}
+  .row-link:last-child{border:none;}
+  .row-link .icon{background:var(--steel);flex:none;width:32px;height:32px;}
+  .row-link span{flex:1;}
+  .avatar{width:64px;height:64px;border-radius:50%;background:var(--cyan);color:var(--cyan-ink);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-size:22px;font-weight:600;margin:0 auto 12px;}
+
+  @media(max-width:640px){.wrap{padding:44px 18px 72px;} .display{font-size:36px;}}
+</style>
+
+<div class="wrap">
+
+  <p class="eyebrow">Assets de UI</p>
+  <h1 class="display">Nyx Finance</h1>
+  <p class="lead">Identidade visual e telas de referência para o app — preto profundo com azul ciano como cor de destaque. Use esta página como guia de cores, tipografia e componentes durante o desenvolvimento.</p>
+
+  <hr class="divider">
+
+  <section>
+    <h2>Paleta de cores</h2>
+    <div class="palette">
+      <div class="swatch"><div class="fill" style="background:#05080B"></div><div class="info"><div class="name">Ink</div><code class="hex">#05080B</code></div></div>
+      <div class="swatch"><div class="fill" style="background:#0E1418"></div><div class="info"><div class="name">Carbon</div><code class="hex">#0E1418</code></div></div>
+      <div class="swatch"><div class="fill" style="background:#171F25"></div><div class="info"><div class="name">Steel</div><code class="hex">#171F25</code></div></div>
+      <div class="swatch"><div class="fill" style="background:#22D8F0"></div><div class="info"><div class="name">Cyan</div><code class="hex">#22D8F0</code></div></div>
+      <div class="swatch"><div class="fill" style="background:#0C7E93"></div><div class="info"><div class="name">Cyan dim</div><code class="hex">#0C7E93</code></div></div>
+      <div class="swatch"><div class="fill" style="background:#3EDC9A"></div><div class="info"><div class="name">Mint (entrada)</div><code class="hex">#3EDC9A</code></div></div>
+      <div class="swatch"><div class="fill" style="background:#FF7A6E"></div><div class="info"><div class="name">Coral (alerta)</div><code class="hex">#FF7A6E</code></div></div>
+      <div class="swatch"><div class="fill" style="background:#8FA3AB"></div><div class="info"><div class="name">Texto secundário</div><code class="hex">#8FA3AB</code></div></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <h2>Tipografia — Space Grotesk + Inter</h2>
+    <div class="type-row"><span class="tag">Display / 46</span><span class="display">R$ 12.480</span></div>
+    <div class="type-row"><span class="tag">Título / 27</span><span class="h1s">Minhas finanças</span></div>
+    <div class="type-row"><span class="tag">Subtítulo / 19</span><span class="h2s">Transações recentes</span></div>
+    <div class="type-row"><span class="tag">Corpo / 15</span><span class="body-s">Inter é usada em todo texto de interface e listas, priorizando legibilidade em telas pequenas.</span></div>
+    <div class="type-row"><span class="tag">Legenda / 12.5</span><span class="cap-s">Atualizado há 2 minutos</span></div>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <h2>Componentes</h2>
+    <div class="comp-grid">
+      <button class="btn btn-primary">Transferir</button>
+      <button class="btn btn-secondary">Adicionar cartão</button>
+      <button class="btn btn-ghost">Cancelar</button>
+      <input class="field" placeholder="Buscar transação">
+      <span class="chip on"><span class="dot"></span>Todas</span>
+      <span class="chip">Entradas</span>
+      <span class="chip">Saídas</span>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <h2>Telas</h2>
+    <div class="phones">
+
+      <div class="phone"><div class="screen">
+        <div class="screen-label">Início</div>
+        <div class="top"><div><div class="hi">Olá, Marina</div><div class="name">Boa tarde</div></div>
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8FA3AB" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div></div>
+        <div class="balance-card">
+          <div class="balance-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5A6970" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>Saldo disponível</div>
+          <div class="balance-num">R$ 12.480,32</div>
+          <div class="balance-sub"><span><b>+18%</b> este mês</span><span>3 cartões</span></div>
+        </div>
+        <div class="quick">
+          <div class="q"><div class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22D8F0" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div><span>Transferir</span></div>
+          <div class="q"><div class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22D8F0" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><span>Pagar</span></div>
+          <div class="q"><div class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22D8F0" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/></svg></div><span>Investir</span></div>
+          <div class="q"><div class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22D8F0" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><span>Mais</span></div>
+        </div>
+        <div class="sec-title">Transações recentes<a>Ver tudo</a></div>
+        <div class="tx"><div class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FA3AB" stroke-width="2"><path d="M3 3h18v18H3z"/></svg></div><div><div class="who">Mercado Central</div><div class="cat">Alimentação</div></div><div class="amt out">-R$ 86,20</div></div>
+        <div class="tx"><div class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FA3AB" stroke-width="2"><path d="M12 2l9 4-9 4-9-4 9-4z"/></svg></div><div><div class="who">Salário</div><div class="cat">Receita</div></div><div class="amt in">+R$ 4.200,00</div></div>
+        <div class="tx"><div class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FA3AB" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg></div><div><div class="who">Uber</div><div class="cat">Transporte</div></div><div class="amt out">-R$ 22,90</div></div>
+      </div></div>
+
+      <div class="phone"><div class="screen">
+        <div class="screen-label">Cartões</div>
+        <div class="top"><div class="name">Meus cartões</div>
+          <div class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8FA3AB" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
+        <div class="card-visual">
+          <span class="cap-s">Nyx Platinum</span>
+          <div class="card-num">•••• •••• •••• 4471</div>
+          <div class="card-foot"><span>Validade<b>09/29</b></span><span>Titular<b>M. Alves</b></span></div>
+        </div>
+        <div class="sec-title">Limite utilizado<span style="color:#22D8F0">62%</span></div>
+        <div class="bars">
+          <div class="b" style="height:30%"></div><div class="b" style="height:52%"></div><div class="b hi" style="height:78%"></div>
+          <div class="b" style="height:40%"></div><div class="b" style="height:60%"></div><div class="b" style="height:35%"></div>
+        </div>
+        <div class="bar-labels"><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
+        <div class="sec-title" style="margin-top:20px">Gastos por categoria</div>
+        <div class="tx"><div class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22D8F0" stroke-width="2"><path d="M3 3h18v18H3z"/></svg></div><div><div class="who">Compras</div><div class="cat">40% do limite</div></div><div class="amt out">R$ 620</div></div>
+        <div class="tx"><div class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22D8F0" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg></div><div><div class="who">Assinaturas</div><div class="cat">18% do limite</div></div><div class="amt out">R$ 279</div></div>
+      </div></div>
+
+      <div class="phone"><div class="screen">
+        <div class="screen-label">Transações</div>
+        <div class="top"><div class="name">Transações</div>
+          <div class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8FA3AB" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></div></div>
+        <div class="filters">
+          <span class="chip on"><span class="dot"></span>Todas</span>
+          <span class="chip">Entradas</span>
+          <span class="chip">Saídas</span>
+        </div>
+        <div class="day-label">Hoje</div>
+        <div class="tx"><div class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FA3AB" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></div><div><div class="who">Farmácia Vida</div><div class="cat">Saúde · 14:22</div></div><div class="amt out">-R$ 45,00</div></div>
+        <div class="tx"><div class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FA3AB" stroke-width="2"><path d="M12 2l9 4-9 4-9-4 9-4z"/></svg></div><div><div class="who">Transferência recebida</div><div class="cat">Pix · 10:05</div></div><div class="amt in">+R$ 300,00</div></div>
+        <div class="day-label">Ontem</div>
+        <div class="tx"><div class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FA3AB" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg></div><div><div class="who">Netflix</div><div class="cat">Assinatura · 09:00</div></div><div class="amt out">-R$ 44,90</div></div>
+        <div class="tx"><div class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FA3AB" stroke-width="2"><path d="M3 3h18v18H3z"/></svg></div><div><div class="who">Padaria São João</div><div class="cat">Alimentação · 08:12</div></div><div class="amt out">-R$ 18,50</div></div>
+        <div class="day-label">21 de setembro</div>
+        <div class="tx"><div class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FA3AB" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg></div><div><div class="who">Posto Ipiranga</div><div class="cat">Transporte · 19:40</div></div><div class="amt out">-R$ 120,00</div></div>
+      </div></div>
+
+      <div class="phone"><div class="screen">
+        <div class="screen-label">Perfil</div>
+        <div class="top"><div class="name">Perfil</div>
+          <div class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8FA3AB" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 0 1-4 0v-.09a1.7 1.7 0 0 0-1-1.55 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.55-1H3a2 2 0 0 1 0-4h.09a1.7 1.7 0 0 0 1.55-1 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H9a1.7 1.7 0 0 0 1-1.55V3a2 2 0 0 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87V9a1.7 1.7 0 0 0 1.55 1H21a2 2 0 0 1 0 4h-.09a1.7 1.7 0 0 0-1.55 1z"/></svg></div></div>
+        <div style="text-align:center;margin:10px 0 26px">
+          <div class="avatar">MA</div>
+          <div class="name">Marina Alves</div>
+          <div class="cap-s">marina.alves@email.com</div>
+        </div>
+        <div class="row-link"><div class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22D8F0" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><span>Segurança e senha</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5A6970" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        <div class="row-link"><div class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22D8F0" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/></svg></div><span>Notificações</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5A6970" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        <div class="row-link"><div class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22D8F0" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></div><span>Cartões vinculados</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5A6970" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        <div class="row-link"><div class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22D8F0" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg></div><span>Ajuda e suporte</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5A6970" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        <button class="btn btn-ghost" style="width:100%;text-align:center;margin-top:18px;color:#FF7A6E">Sair da conta</button>
+      </div></div>
+
+    </div>
+  </section>
+
+</div>
