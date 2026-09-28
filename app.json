@@ -6,11 +6,6 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#04232A"
-    },
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true
@@ -21,7 +16,8 @@
         "foregroundImage": "./assets/adaptive-icon-foreground.png",
         "backgroundImage": "./assets/adaptive-icon-background.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.mthsneves.financeapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -29,6 +25,12 @@
     "plugins": [
       "expo-router",
       "expo-status-bar"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "aba1bbef-4336-43c2-bee5-5f3fc3704713"
+      }
+    }
   }
 }
