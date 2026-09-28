@@ -432,7 +432,7 @@ export default function TransactionsScreen() {
         animationType="slide"
       >
         <View className="flex-1 bg-black/60 justify-end">
-          <View className="bg-ink p-6 rounded-t-3xl border-t border-line shadow-xl">
+          <View className="bg-ink p-6 rounded-t-3xl border-t border-line">
             <View className="flex-row justify-between items-center mb-6">
               <Text className="text-text-1 font-bold text-[20px]">Editar Gasto</Text>
               <TouchableOpacity onPress={() => setEditingTransaction(null)} className="p-2">
