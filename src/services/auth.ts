@@ -70,7 +70,27 @@ export async function signInWithGoogle() {
     // Abre o navegador interno do celular
     const res = await WebBrowser.openAuthSessionAsync(data.url, redirectUrl);
     
-    // Se a autenticação der certo, o Supabase já intercepta e atualiza a sessão sozinho
+    // Se a autenticação der certo, interceptamos o token
+    if (res.type === 'success' && res.url) {
+      // O Supabase retorna os dados no hash da URL (#access_token=...)
+      const urlStr = res.url;
+      const hashParams = urlStr.includes('#') ? urlStr.split('#')[1] : urlStr.split('?')[1];
+      
+      if (hashParams) {
+        const params = hashParams.split('&').reduce((acc, current) => {
+          const [key, value] = current.split('=');
+          acc[key] = value;
+          return acc;
+        }, {} as Record<string, string>);
+
+        if (params.access_token && params.refresh_token) {
+          await supabase.auth.setSession({
+            access_token: params.access_token,
+            refresh_token: params.refresh_token,
+          });
+        }
+      }
+    }
   }
   
   return data;
