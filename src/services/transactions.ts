@@ -5,19 +5,32 @@ type TransactionRow = Database['public']['Tables']['transactions']['Row'];
 type TransactionInsert = Database['public']['Tables']['transactions']['Insert'];
 type TransactionUpdate = Database['public']['Tables']['transactions']['Update'];
 
+// Helper para lidar com erro de 'JWT issued at future' comum ao logar em emuladores
+const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+
+async function fetchWithRetry<T>(queryFn: () => Promise<{data: T, error: any}>, retries = 2, delayMs = 1500): Promise<{data: T, error: any}> {
+  const res = await queryFn();
+  if (res.error && res.error.message.includes('JWT issued at future') && retries > 0) {
+    await delay(delayMs);
+    return fetchWithRetry(queryFn, retries - 1, delayMs);
+  }
+  return res;
+}
+
 /**
  * Busca todas as transações do usuário logado, ordenadas da mais recente para a mais antiga.
  * Traz também os dados da categoria e da conta para podermos mostrar na tela.
  */
 export async function getTransactions(): Promise<any[]> {
-  const { data, error } = await supabase
+  const { data, error } = await fetchWithRetry(() => supabase
     .from('transactions')
     .select(`
       *,
       categories ( name, icon, color ),
       accounts ( name )
     `)
-    .order('date', { ascending: false });
+    .order('date', { ascending: false })
+  );
 
   if (error) throw new Error(error.message);
   return data || [];
