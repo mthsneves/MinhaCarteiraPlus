@@ -407,6 +407,55 @@ export default function TransactionsScreen() {
     );
   }
 
+  const renderSummaryGraphic = () => {
+    let totalIncome = 0;
+    let totalExpense = 0;
+
+    const allTransactions = [
+      ...Object.values(transactionsByAccount).flat(),
+      ...globalIncomes
+    ];
+
+    allTransactions.forEach(t => {
+      const amount = Number(t.amount) || 0;
+      if (t.type === 'income') totalIncome += amount;
+      if (t.type === 'expense') totalExpense += amount;
+    });
+
+    return (
+      <View className="bg-carbon border border-line rounded-2xl p-5 mb-6">
+        <View className="flex-row items-center mb-4">
+          <Feather name="calendar" size={16} color="#8FA3AB" />
+          <Text className="text-text-2 text-[14px] font-medium ml-2">Balanço Geral</Text>
+        </View>
+
+        <View className="flex-row gap-4">
+          {/* Ganhos */}
+          <View className="flex-1 bg-ink border border-line rounded-xl p-4">
+            <Text className="text-text-3 text-[12px] mb-1">Entradas</Text>
+            <View className="flex-row items-center mt-1">
+              <Feather name="trending-up" size={16} color="#4ADE80" />
+              <Text className="text-mint font-bold text-[16px] ml-2" numberOfLines={1} adjustsFontSizeToFit>
+                {formatCurrency(totalIncome)}
+              </Text>
+            </View>
+          </View>
+
+          {/* Gastos */}
+          <View className="flex-1 bg-ink border border-line rounded-xl p-4">
+            <Text className="text-text-3 text-[12px] mb-1">Saídas</Text>
+            <View className="flex-row items-center mt-1">
+              <Feather name="trending-down" size={16} color="#FF7A6E" />
+              <Text className="text-coral font-bold text-[16px] ml-2" numberOfLines={1} adjustsFontSizeToFit>
+                {formatCurrency(totalExpense)}
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    );
+  };
+
   return (
     <View className="flex-1 bg-ink p-6">
       <Header title="Meus Gastos" />
@@ -417,6 +466,7 @@ export default function TransactionsScreen() {
         renderItem={renderAccountCard}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 40 }}
+        ListHeaderComponent={renderSummaryGraphic}
         ListEmptyComponent={
           <View className="items-center mt-10">
             <Feather name="inbox" size={48} color="#5A6970" className="mb-4" />
