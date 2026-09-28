@@ -72,22 +72,32 @@ export async function signInWithGoogle() {
     
     // Se a autenticação der certo, interceptamos o token
     if (res.type === 'success' && res.url) {
-      // O Supabase retorna os dados no hash da URL (#access_token=...)
       const urlStr = res.url;
-      const hashParams = urlStr.includes('#') ? urlStr.split('#')[1] : urlStr.split('?')[1];
       
-      if (hashParams) {
-        const params = hashParams.split('&').reduce((acc, current) => {
-          const [key, value] = current.split('=');
-          acc[key] = value;
-          return acc;
-        }, {} as Record<string, string>);
+      // Usa o parser oficial do Expo para separar os pedaços da URL com segurança
+      const parsedUrl = Linking.parse(urlStr);
+      const params = parsedUrl.queryParams || {};
 
-        if (params.access_token && params.refresh_token) {
-          await supabase.auth.setSession({
-            access_token: params.access_token,
-            refresh_token: params.refresh_token,
-          });
+      // Cenário 1: Fluxo PKCE (Supabase retorna um 'code' na URL)
+      if (params.code) {
+        await supabase.auth.exchangeCodeForSession(String(params.code));
+      } 
+      // Cenário 2: Fluxo Implícito (Supabase retorna access_token no Hash '#' da URL)
+      else {
+        const hashParamsStr = urlStr.includes('#') ? urlStr.split('#')[1] : '';
+        if (hashParamsStr) {
+          const hashParams = hashParamsStr.split('&').reduce((acc, current) => {
+            const [key, value] = current.split('=');
+            acc[key] = value;
+            return acc;
+          }, {} as Record<string, string>);
+
+          if (hashParams.access_token && hashParams.refresh_token) {
+            await supabase.auth.setSession({
+              access_token: hashParams.access_token,
+              refresh_token: hashParams.refresh_token,
+            });
+          }
         }
       }
     }
